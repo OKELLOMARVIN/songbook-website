@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Support — SongBook</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue: #007AFF;
+      --text: #0f172a;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --bg: #f8fafc;
+      --white: #ffffff;
+    }
+
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+    }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo .logo-icon { font-size: 24px; }
+    .nav-logo .logo-text { font-size: 19px; font-weight: 800; color: var(--text); }
+    .nav-links { display: flex; gap: 8px; list-style: none; }
+    .nav-links a {
+      text-decoration: none; color: var(--muted); font-size: 14px; font-weight: 500;
+      padding: 6px 12px; border-radius: 8px; transition: all .15s;
+    }
+    .nav-links a:hover { color: var(--blue); background: #eff6ff; }
+    .nav-links a.active { color: var(--blue); background: #eff6ff; }
+
+    /* ── Page Header ── */
+    .page-header {
+      background: linear-gradient(135deg, #10b981 0%, #0284c7 100%);
+      color: white; padding: 64px 24px 52px;
+    }
+    .page-header-inner { max-width: 900px; margin: 0 auto; text-align: center; }
+    .page-header-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(255,255,255,0.18); border-radius: 20px;
+      padding: 5px 14px; font-size: 13px; font-weight: 600;
+      margin-bottom: 18px;
+    }
+    .page-header h1 { font-size: 40px; font-weight: 900; margin-bottom: 12px; }
+    .page-header p { font-size: 16px; color: rgba(255,255,255,0.82); max-width: 480px; margin: 0 auto; }
+
+    /* ── Contact Cards ── */
+    .contact-section {
+      max-width: 900px; margin: 0 auto;
+      padding: 56px 24px 0;
+    }
+    .contact-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+    }
+    @media (max-width: 640px) { .contact-grid { grid-template-columns: 1fr; } }
+
+    .contact-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 16px; padding: 24px; text-align: center;
+      transition: box-shadow .2s, transform .2s;
+    }
+    .contact-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,.08); transform: translateY(-2px); }
+    .contact-card .card-icon {
+      width: 52px; height: 52px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; margin: 0 auto 14px;
+    }
+    .contact-card .card-icon.blue { background: #eff6ff; }
+    .contact-card .card-icon.green { background: #f0fdf4; }
+    .contact-card .card-icon.orange { background: #fff7ed; }
+    .contact-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+    .contact-card p { font-size: 14px; color: var(--muted); margin-bottom: 16px; }
+    .contact-card a.btn {
+      display: inline-block;
+      background: var(--blue); color: white;
+      padding: 9px 20px; border-radius: 9px;
+      font-size: 14px; font-weight: 600; text-decoration: none;
+      transition: background .15s;
+    }
+    .contact-card a.btn:hover { background: #0056b3; }
+
+    /* ── FAQ ── */
+    .faq-section {
+      max-width: 780px; margin: 0 auto;
+      padding: 56px 24px 80px;
+    }
+    .faq-section-title {
+      font-size: 13px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .07em; color: var(--blue); margin-bottom: 6px;
+    }
+    .faq-section > h2 {
+      font-size: 28px; font-weight: 900; margin-bottom: 32px;
+    }
+
+    .faq-group { margin-bottom: 48px; }
+    .faq-group-label {
+      font-size: 12px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .06em; color: var(--muted);
+      border-bottom: 1px solid var(--border); padding-bottom: 10px;
+      margin-bottom: 0;
+    }
+
+    details { border-bottom: 1px solid var(--border); }
+    details summary {
+      font-size: 16px; font-weight: 600; color: var(--text);
+      padding: 18px 32px 18px 0; cursor: pointer;
+      position: relative; list-style: none; user-select: none;
+      transition: color .15s;
+    }
+    details summary::-webkit-details-marker { display: none; }
+    details summary::after {
+      content: "+"; position: absolute; right: 0; top: 50%;
+      transform: translateY(-50%);
+      font-size: 20px; font-weight: 400; color: var(--blue);
+      transition: transform .2s;
+    }
+    details[open] summary::after { transform: translateY(-50%) rotate(45deg); }
+    details summary:hover { color: var(--blue); }
+    details .answer {
+      font-size: 15px; color: #374151; padding-bottom: 20px;
+      line-height: 1.75;
+    }
+    details .answer p { margin-bottom: 10px; }
+    details .answer p:last-child { margin-bottom: 0; }
+    details .answer ul { padding-left: 20px; margin: 8px 0; }
+    details .answer ul li { margin-bottom: 5px; }
+    details .answer a { color: var(--blue); }
+
+    /* ── CTA ── */
+    .cta-band {
+      background: linear-gradient(135deg, #007AFF 0%, #5856d6 100%);
+      padding: 60px 24px; text-align: center; color: white;
+    }
+    .cta-band h2 { font-size: 30px; font-weight: 900; margin-bottom: 10px; }
+    .cta-band p { font-size: 16px; opacity: .82; margin-bottom: 24px; }
+    .cta-band a {
+      display: inline-block; background: white; color: var(--blue);
+      padding: 14px 32px; border-radius: 12px;
+      font-size: 16px; font-weight: 700; text-decoration: none;
+      transition: transform .15s, box-shadow .15s;
+    }
+    .cta-band a:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.18); }
+
+    /* ── Footer ── */
+    footer {
+      background: #0f172a; color: rgba(255,255,255,0.45);
+      padding: 32px 24px; text-align: center; font-size: 13px;
+    }
+    footer .footer-inner { max-width: 1100px; margin: 0 auto; }
+    footer .footer-logo { font-size: 22px; font-weight: 800; color: white; margin-bottom: 10px; }
+    footer .footer-links { margin: 12px 0; }
+    footer .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; margin: 0 10px; }
+    footer .footer-links a:hover { color: white; }
+    footer .footer-copy { margin-top: 12px; font-size: 12px; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html">
+      <span class="logo-icon">🎵</span>
+      <span class="logo-text">SongBook</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+      <li><a href="terms.html">Terms</a></li>
+      <li><a href="support.html" class="active">Support</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="page-header-badge">💬 Help Center</div>
+    <h1>How can we help?</h1>
+    <p>Find answers to common questions, or reach out directly — we're happy to help.</p>
+  </div>
+</div>
+
+<!-- Contact Cards -->
+<div class="contact-section">
+  <div class="contact-grid">
+    <div class="contact-card">
+      <div class="card-icon blue">✉️</div>
+      <h3>Email support</h3>
+      <p>For any question, feedback, or account issue, we'll reply within 24 hours.</p>
+      <a class="btn" href="mailto:okellomarvinkevin@gmail.com">Send an email</a>
+    </div>
+    <div class="contact-card">
+      <div class="card-icon green">💰</div>
+      <h3>Refund request</h3>
+      <p>Not satisfied with your $2.99 purchase? We offer a full refund within 7 days, no questions asked.</p>
+      <a class="btn" href="mailto:okellomarvinkevin@gmail.com?subject=Refund%20Request%20%E2%80%94%20SongBook">Request refund</a>
+    </div>
+    <div class="contact-card">
+      <div class="card-icon orange">🐛</div>
+      <h3>Report a bug</h3>
+      <p>Found something broken? Let us know and we'll fix it in the next update.</p>
+      <a class="btn" href="mailto:okellomarvinkevin@gmail.com?subject=Bug%20Report%20%E2%80%94%20SongBook">Report bug</a>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="faq-section">
+  <div class="faq-section-title">Help Center</div>
+  <h2>Frequently asked questions</h2>
+
+  <!-- Getting Started -->
+  <div class="faq-group">
+    <div class="faq-group-label">Getting Started</div>
+
+    <details>
+      <summary>What is SongBook?</summary>
+      <div class="answer">
+        <p>SongBook is a mobile app for organising lyrics and chords. You create songbooks — named collections of songs — and add lyrics along with chord annotations for guitar, ukulele, or any instrument you play. It's designed for church worship teams, bands, concert performers, campfire sing-alongs, karaoke nights, music camps, and anyone who performs or plays music.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Is SongBook free to use?</summary>
+      <div class="answer">
+        <p>Yes — SongBook is free to download and use. Free accounts can create up to 3 songbooks. To unlock unlimited songbooks, unlimited songs, and all premium features, there's a one-time purchase of <strong>USD $2.99</strong>. You pay once and keep access forever with no subscription or renewal.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Is SongBook available on Android and iOS?</summary>
+      <div class="answer">
+        <p>Yes, SongBook is available on both iOS and Android. The core experience is the same on both platforms, though some platform-specific features (like the file picker) may behave slightly differently between operating systems.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>How do I create a songbook?</summary>
+      <div class="answer">
+        <p>From the home screen, tap the <strong>+</strong> button and give your songbook a name — for example "Sunday Worship Set", "Campfire Classics", or "Band Rehearsal". You can then add songs by typing lyrics manually, importing from a file, pasting from clipboard, or fetching lyrics automatically by song title and artist.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Sharing & Collaboration -->
+  <div class="faq-group">
+    <div class="faq-group-label">Sharing &amp; Collaboration</div>
+
+    <details>
+      <summary>How does sharing work?</summary>
+      <div class="answer">
+        <p>When you share a songbook, SongBook generates a 6-character code (e.g. <strong>ABC123</strong>). Share that code with your bandmates, worship team, or anyone else you want to collaborate with. They enter the code in the app and instantly join the songbook.</p>
+        <p>You can set permissions when sharing:</p>
+        <ul>
+          <li><strong>View only</strong> — others can see songs and chords but cannot make changes.</li>
+          <li><strong>Edit</strong> — others can add songs, edit lyrics, and update chords in real time.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary>Can multiple people edit a songbook at the same time?</summary>
+      <div class="answer">
+        <p>Yes. SongBook supports real-time collaboration. When multiple users with edit access open the same shared songbook, changes sync instantly for everyone. This is ideal for bands doing live setlist management or worship teams building a Sunday set together from different devices.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>How many people can I share a songbook with?</summary>
+      <div class="answer">
+        <p>There's no hard limit on collaborators. Share the code with as many people as you like — the whole band, an entire worship team, everyone at a music camp. Each person just needs the SongBook app installed to join.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Lyrics & Import -->
+  <div class="faq-group">
+    <div class="faq-group-label">Lyrics &amp; Import</div>
+
+    <details>
+      <summary>Can I import lyrics from another app or document?</summary>
+      <div class="answer">
+        <p>Yes — SongBook offers three ways to get lyrics into a song:</p>
+        <ul>
+          <li><strong>File import:</strong> Open a PDF or plain text file from your device. SongBook extracts the text automatically.</li>
+          <li><strong>Paste from clipboard:</strong> Copy lyrics from Notes, a browser, or any other app, then tap "Paste" inside SongBook.</li>
+          <li><strong>Fetch lyrics:</strong> Type the song title and artist and SongBook will search for lyrics automatically using a public lyrics database.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary>What file types can I import?</summary>
+      <div class="answer">
+        <p>SongBook supports <strong>PDF files</strong> and <strong>plain text (.txt) files</strong>. For PDFs, text is extracted automatically. If a PDF is a scanned image rather than real text, extraction may be incomplete — in that case, using clipboard paste will work better.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Is it legal to store song lyrics in SongBook?</summary>
+      <div class="answer">
+        <p>SongBook is a personal organisation tool. Many commercially released song lyrics are protected by copyright, and you are responsible for ensuring your use complies with applicable copyright law. SongBook is designed for managing your own original content or lyrics you have the right to use. Private songbooks are stored only on your device and never uploaded to our servers.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Chord Editor -->
+  <div class="faq-group">
+    <div class="faq-group-label">Chord Editor</div>
+
+    <details>
+      <summary>How do I add chords to a song?</summary>
+      <div class="answer">
+        <p>Open a song and tap the <strong>Chords</strong> button (🎸) in the top bar to enter chord editing mode. Each line of lyrics will show a row above it where you can place chords. Tap <strong>+ chord</strong> on any line to choose from a list of common guitar and ukulele chords, or type a custom chord name. Long-press a chord pill to remove it.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>What instruments does the chord editor support?</summary>
+      <div class="answer">
+        <p>The chord editor is instrument-agnostic — it stores chord names (e.g. G, Cadd9, Am7, F#m) positioned above lyric lines, so it works for guitar, ukulele, banjo, mandolin, piano, or any other chord-based instrument. You can also set a capo position and a song key on each song for quick reference.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Can I annotate capo, key, and tempo?</summary>
+      <div class="answer">
+        <p>Yes. When editing a song you can set the <strong>Key</strong> (e.g. G, Bb, C#m), a <strong>Capo</strong> fret number, and a <strong>Tempo</strong> in BPM. These display alongside the song title so everyone in the band always has the right settings at a glance during a rehearsal or performance.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Can I add section labels like Verse, Chorus, and Bridge?</summary>
+      <div class="answer">
+        <p>Yes. You can organise songs into labelled sections such as Intro, Verse, Pre-Chorus, Chorus, Bridge, Outro, and more. This makes it much easier to navigate during a live performance, especially for longer worship songs or medleys.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Premium -->
+  <div class="faq-group">
+    <div class="faq-group-label">Premium</div>
+
+    <details>
+      <summary>What does the $2.99 premium purchase unlock?</summary>
+      <div class="answer">
+        <p>The one-time premium purchase unlocks everything:</p>
+        <ul>
+          <li>Unlimited songbooks (free tier is capped at 3)</li>
+          <li>Unlimited songs per songbook</li>
+          <li>Real-time collaboration and sharing</li>
+          <li>Full chord editor for any instrument</li>
+          <li>PDF and file import</li>
+          <li>All future features — at no extra cost, forever</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary>Is it a subscription or a one-time purchase?</summary>
+      <div class="answer">
+        <p>It is a <strong>one-time purchase</strong>. You pay $2.99 once and keep premium access permanently, including all future features we add. There is no subscription, no monthly fee, and no renewal charge.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>What is your refund policy?</summary>
+      <div class="answer">
+        <p>If you are not satisfied for any reason, contact us at <a href="mailto:okellomarvinkevin@gmail.com">okellomarvinkevin@gmail.com</a> within <strong>7 days</strong> of purchase and we will issue a full refund — no questions asked.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>If I switch phones, do I keep premium?</summary>
+      <div class="answer">
+        <p>Yes. Premium is linked to your SongBook account, not your device. Simply log in with your account on the new device and your premium access will be restored automatically.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Privacy & Data -->
+  <div class="faq-group">
+    <div class="faq-group-label">Privacy &amp; Data</div>
+
+    <details>
+      <summary>Where is my data stored?</summary>
+      <div class="answer">
+        <p><strong>Private songbooks</strong> are stored only on your device and never sent to our servers. They are removed when you uninstall the app.</p>
+        <p><strong>Shared songbooks</strong> are stored on our servers so collaborators can access them in real time. They are deleted when you remove the songbook or close your account.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>How do I delete my account?</summary>
+      <div class="answer">
+        <p>Email us at <a href="mailto:okellomarvinkevin@gmail.com">okellomarvinkevin@gmail.com</a> with the subject "Delete my account" and we will permanently delete all your account data within 30 days.</p>
+      </div>
+    </details>
+  </div>
+
+</div>
+
+<!-- CTA -->
+<div class="cta-band">
+  <h2>Still need help?</h2>
+  <p>Can't find what you're looking for? We'll get back to you within 24 hours.</p>
+  <a href="mailto:okellomarvinkevin@gmail.com">Email us directly →</a>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">🎵 SongBook</div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="support.html">Support</a>
+    </div>
+    <div class="footer-copy">© 2025 SongBook by Marvin Okello &nbsp;·&nbsp; Made for musicians everywhere</div>
+  </div>
+</footer>
+
+</body>
+</html>

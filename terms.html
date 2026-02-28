@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Service — SongBook</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue: #007AFF;
+      --text: #0f172a;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --bg: #f8fafc;
+      --white: #ffffff;
+    }
+
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+    }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo .logo-icon { font-size: 24px; }
+    .nav-logo .logo-text { font-size: 19px; font-weight: 800; color: var(--text); }
+    .nav-links { display: flex; gap: 8px; list-style: none; }
+    .nav-links a {
+      text-decoration: none; color: var(--muted); font-size: 14px; font-weight: 500;
+      padding: 6px 12px; border-radius: 8px; transition: all .15s;
+    }
+    .nav-links a:hover { color: var(--blue); background: #eff6ff; }
+    .nav-links a.active { color: var(--blue); background: #eff6ff; }
+
+    /* ── Page Header ── */
+    .page-header {
+      background: linear-gradient(135deg, #1a1a2e 0%, #2d2d5e 100%);
+      color: white; padding: 64px 24px 52px;
+    }
+    .page-header-inner { max-width: 780px; margin: 0 auto; }
+    .page-header-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(255,255,255,0.12); border-radius: 20px;
+      padding: 5px 14px; font-size: 13px; font-weight: 600;
+      margin-bottom: 18px;
+    }
+    .page-header h1 { font-size: 40px; font-weight: 900; margin-bottom: 10px; }
+    .page-header p { font-size: 16px; color: rgba(255,255,255,0.65); }
+
+    /* ── Content ── */
+    .content { max-width: 780px; margin: 0 auto; padding: 56px 24px 80px; }
+
+    .summary-box {
+      background: #eff6ff; border: 1.5px solid #bfdbfe;
+      border-radius: 12px; padding: 18px 22px; margin-bottom: 44px;
+    }
+    .summary-box .summary-title {
+      font-size: 13px; font-weight: 700; color: #1e40af;
+      text-transform: uppercase; letter-spacing: .04em; margin-bottom: 8px;
+    }
+    .summary-box p { font-size: 14px; color: #1e40af; margin: 0; line-height: 1.65; }
+
+    h2 {
+      font-size: 21px; font-weight: 800; margin: 44px 0 12px; color: var(--text);
+      display: flex; align-items: center; gap: 10px;
+    }
+    h2:first-of-type { margin-top: 0; }
+    .h2-num {
+      width: 28px; height: 28px; border-radius: 8px;
+      background: #1a1a2e; color: white;
+      font-size: 13px; font-weight: 700; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    h3 { font-size: 16px; font-weight: 700; margin: 28px 0 10px; color: var(--text); }
+
+    p { font-size: 15px; color: #374151; margin-bottom: 14px; }
+
+    ul { padding-left: 0; margin-bottom: 14px; list-style: none; }
+    ul li {
+      font-size: 15px; color: #374151; margin-bottom: 8px;
+      padding-left: 22px; position: relative;
+    }
+    ul li::before {
+      content: ""; position: absolute; left: 0; top: 9px;
+      width: 7px; height: 7px; border-radius: 50%; background: var(--blue);
+    }
+
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .divider { border: none; border-top: 1px solid var(--border); margin: 36px 0; }
+    strong { color: var(--text); font-weight: 700; }
+    em { color: var(--muted); }
+
+    .highlight-box {
+      background: #f0fdf4; border: 1.5px solid #86efac;
+      border-radius: 12px; padding: 18px 22px; margin: 20px 0;
+    }
+    .highlight-box p { color: #166534; font-size: 14px; margin: 0; line-height: 1.65; }
+
+    .pricing-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 14px; overflow: hidden; margin: 20px 0;
+    }
+    .pricing-card-header {
+      background: linear-gradient(135deg, #007AFF, #5856d6);
+      padding: 20px 24px; color: white;
+    }
+    .pricing-card-header .price-label { font-size: 13px; font-weight: 600; opacity: .8; margin-bottom: 4px; }
+    .pricing-card-header .price { font-size: 36px; font-weight: 900; }
+    .pricing-card-header .price-note { font-size: 13px; opacity: .75; margin-top: 4px; }
+    .pricing-card-body { padding: 20px 24px; }
+    .pricing-card-body ul li::before { background: #10b981; }
+
+    .warning-box {
+      background: #fff7ed; border: 1px solid #fed7aa;
+      border-radius: 10px; padding: 14px 18px; margin: 16px 0;
+    }
+    .warning-box p { color: #9a3412; font-size: 14px; margin: 0; }
+
+    /* ── Footer ── */
+    footer {
+      background: #0f172a; color: rgba(255,255,255,0.45);
+      padding: 32px 24px; text-align: center; font-size: 13px;
+    }
+    footer .footer-inner { max-width: 1100px; margin: 0 auto; }
+    footer .footer-logo { font-size: 22px; font-weight: 800; color: white; margin-bottom: 10px; }
+    footer .footer-links { margin: 12px 0; }
+    footer .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; margin: 0 10px; }
+    footer .footer-links a:hover { color: white; }
+    footer .footer-copy { margin-top: 12px; font-size: 12px; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html">
+      <span class="logo-icon">🎵</span>
+      <span class="logo-text">SongBook</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+      <li><a href="terms.html" class="active">Terms</a></li>
+      <li><a href="support.html">Support</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="page-header-badge">📄 Terms of Service</div>
+    <h1>Terms of Service</h1>
+    <p>Last updated: 1 January 2025 &nbsp;·&nbsp; Effective immediately</p>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="summary-box">
+    <div class="summary-title">Plain English summary</div>
+    <p>Use SongBook for legal purposes. Your content is yours. We offer a one-time $2.99 purchase with a 7-day money-back guarantee that unlocks unlimited songbooks and all premium features forever. We can suspend accounts that abuse the platform.</p>
+  </div>
+
+  <h2><span class="h2-num">1</span> Acceptance of terms</h2>
+  <p>By downloading, installing, or using the SongBook mobile application ("the App", "SongBook"), you agree to be bound by these Terms of Service ("Terms"). These Terms form a legally binding agreement between you and <strong>Marvin Okello</strong> ("we", "us", "our"), the developer of SongBook.</p>
+  <p>If you do not agree to these Terms, do not use the App.</p>
+
+  <hr class="divider" />
+
+  <h2><span class="h2-num">2</span> Description of the service</h2>
+  <p>SongBook is a mobile application for musicians, worship teams, bands, and anyone who sings or plays. It allows users to:</p>
+  <ul>
+    <li>Create and manage digital songbooks containing song lyrics and chord annotations for guitar, ukulele, and other string instruments.</li>
+    <li>Add chord positions, capo settings, key signatures, tempo markings, and section labels (verse, chorus, bridge) to songs.</li>
+    <li>Import lyrics from PDF files, plain text files, or by pasting from clipboard.</li>
+    <li>Fetch lyrics automatically via a built-in lyrics search.</li>
+    <li>Share songbooks with other users via 6-character share codes with configurable view or edit permissions.</li>
+    <li>Collaborate on songbooks in real time with other app users.</li>
+    <li>Use songbooks for concerts, church services, campfires, karaoke nights, band rehearsals, camps, and any other setting.</li>
+  </ul>
+  <p>SongBook is available on iOS and Android. Features may vary between platforms.</p>
+
+  <hr class="divider" />
+
+  <h2><span class="h2-num">3</span> Account registration</h2>
+  <p>To use SongBook you must create an account by providing a valid email address and password. You agree to:</p>
+  <ul>
+    <li>Provide accurate and truthful information during registration.</li>
+    <li>Keep your password secure and not share it with others.</li>
+    <li>Notify us immediately at <a href="mailto:okellomarvinkevin@gmail.com">okellomarvinkevin@gmail.com</a> if you suspect unauthorised access to your account.</li>
+    <li>Be responsible for all activity that occurs under your account.</li>
+  </ul>
+  <p>You must be at least 13 years old to create an account. If you are under 18, you confirm that you have parental or guardian consent.</p>
+
+  <hr class="divider" />
+
+  <h2><span class="h2-num">4</span> Purchases and payment</h2>
+
+  <h3>One-time premium purchase</h3>
+
+  <div class="pricing-card">
+    <div class="pricing-card-header">
+      <div class="price-label">SongBook Premium — one-time</div>
+      <div class="price">USD $2.99</div>
+      <div class="price-note">Pay once, own it forever. No subscription, no renewal.</div>
+    </div>
+    <div class="pricing-card-body">
+      <p style="margin-bottom:12px; font-size:14px; color: var(--muted);">Unlocks all of the following permanently:</p>
+      <ul>
+        <li>Unlimited songbooks (free tier is limited to 3)</li>
+        <li>Unlimited songs per songbook</li>
+        <li>Real-time collaboration and sharing</li>
+        <li>Full chord editor for guitar, ukulele, and other instruments</li>
+        <li>PDF and file import</li>
+        <li>All future features at no additional charge</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <p><strong>✓ Refund Policy:</strong> If you are not satisfied with your purchase, contact us at <a href="mailto:okellomarvinkevin@gmail.com">okellomarvinkevin@gmail.com</a> within <strong>7 days</strong> of purchase and we will issue a full refund — no questions asked.</p>
+  </div>
+
+  <h3>Payment processing</h3>
+  <p>All payments are processed by <strong>Stripe, Inc.</strong>, a third-party payment processor. By completing a purchase, you also agree to Stripe's <a href="https://stripe.com/legal/consumer" target="_blank" rel="noopener">Terms of Service</a>. We do not store your payment card information.</p>
+
+  <h3>Free tier</h3>
+  <p>SongBook may be used for free with certain limitations (currently up to 3 songbooks). Free tier limits may change at our discretion with reasonable notice to existing users.</p>
+
+  <hr class="divider" />
+
+  <h2><span class="h2-num">5</span> Your content</h2>
+  <p><strong>You own your content.</strong> Song lyrics, chord annotations, capo settings, and other content you create in SongBook remain your intellectual property. By using the sharing feature, you grant us a limited, non-exclusive licence to store and transmit your shared content to the collaborators you invite, solely for the purpose of operating the service.</p>
+
+  <h3>Content you must not upload</h3>
+  <p>You agree not to upload or share content that:</p>
+  <ul>
+    <li>Infringes the copyright, trademark, or other intellectual property rights of any third party.</li>
+    <li>Is unlawful, defamatory, harassing, abusive, fraudulent, or obscene.</li>
+    <li>Contains malware, viruses, or other harmful code.</li>
+    <li>Violates any applicable law or regulation.</li>
+  </ul>
+
+  <div class="warning-box">
+    <p><strong>Note on song lyrics:</strong> Many song lyrics are protected by copyright. You are responsible for ensuring your use of any lyrics complies with applicable copyright law. SongBook provides tools to manage your own original content or content you are licensed to use.</p>
+  </div>
+
+  <hr class="divider" />
+
+  <h2><span class="h2-num">6</span> Acceptable use</h2>
+  <p>You agree to use SongBook only for lawful purposes. You must not:</p>
+  <ul>
+    <li>Attempt to gain unauthorised access to any account, server, or network connected to SongBook.</li>
+    <li>Reverse-engineer, decompile, or disassemble the App.</li>
+    <li>Use automated tools (bots, scrapers, crawlers) to interact with the service.</li>
+    <li>Use share codes to spam, distribute malware, or harass other users.</li>
+    <li>Impersonate any person or entity, or misrepresent your affiliation.</li>
+    <li>Interfere with or disrupt the servers or networks connected to SongBook.</li>
+    <li>Circumvent any usage limits, premium gate, or access controls in the App.</li>
+  </ul>
+
+  <hr class="divider" />
+
+  <h2><span class="h2-num">7</span> Third-party services</h2>
+  <p>SongBook integrates with the following third-party services:</p>
+  <ul>
+    <li><strong>Stripe</strong> — payment processing. Governed by Stripe's own Terms of Service.</li>
+    <li><strong>Lyrics.ovh</strong> — public lyrics API used for the optional "Get Lyrics" feature. Use of this feature is subject to their terms.</li>
+  </ul>
+  <p>We are not responsible for the availability, accuracy, or content of third-party services.</p>
+
+  <hr class="divider" />
+
+  <h2><span class="h2-num">8</span> Intellectual property</h2>
+  <p>The SongBook app, its design, code, branding, and all associated materials are the intellectual property of Marvin Okello and are protected by applicable copyright and trademark law. You may not copy, reproduce, distribute, or create derivative works from the App without our prior written consent.</p>
+
+  <hr class="divider" />
+
+  <h2><span class="h2-num">9</span> Termination</h2>
+  <p>We reserve the right to suspend or terminate your account at any time if you:</p>
+  <ul>
+    <li>Violate these Terms of Service.</li>
+    <li>Engage in abusive behaviour towards other users.</li>
+    <li>Attempt to circumvent the app's security or payment system.</li>
+  </ul>
+  <p>If your account is terminated for a violation, you will not be entitled to a refund. If we terminate your account for reasons other than a violation, we will issue a full refund where applicable.</p>
+  <p>You may delete your account at any time by contacting us at <a href="mailto:okellomarvinkevin@gmail.com">okellomarvinkevin@gmail.com</a>.</p>
+
+  <hr class="divider" />
+
+  <h2><span class="h2-num">10</span> Disclaimers and limitation of liability</h2>
+  <p>SongBook is provided on an "as is" and "as available" basis without warranties of any kind, either express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, or non-infringement.</p>
+  <p>We do not warrant that:</p>
+  <ul>
+    <li>The App will be uninterrupted, error-free, or free from viruses.</li>
+    <li>Lyrics fetched from third-party sources are accurate or complete.</li>
+    <li>Your data will never be lost (always keep backups of important content).</li>
+  </ul>
+  <p>To the maximum extent permitted by applicable law, our total liability to you for any claims arising out of or relating to these Terms or your use of SongBook shall not exceed the amount you paid us in the 12 months preceding the claim, or USD $10, whichever is greater.</p>
+
+  <hr class="divider" />
+
+  <h2><span class="h2-num">11</span> Changes to these terms</h2>
+  <p>We may update these Terms from time to time. We will notify you of significant changes by updating the "Last updated" date above and, where required, by sending an email notification. Continued use of the App after updated Terms take effect constitutes your acceptance of the revised Terms.</p>
+
+  <hr class="divider" />
+
+  <h2><span class="h2-num">12</span> Governing law</h2>
+  <p>These Terms are governed by and construed in accordance with the laws of <strong>Kenya</strong>, without regard to its conflict of law provisions. Any disputes arising from these Terms shall be subject to the exclusive jurisdiction of the courts of Kenya.</p>
+
+  <hr class="divider" />
+
+  <h2><span class="h2-num">13</span> Contact</h2>
+  <p>For any questions about these Terms of Service, please contact:</p>
+  <p>
+    <strong>Marvin Okello</strong><br />
+    Email: <a href="mailto:okellomarvinkevin@gmail.com">okellomarvinkevin@gmail.com</a><br />
+    App: SongBook — Lyrics &amp; Chords
+  </p>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">🎵 SongBook</div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="support.html">Support</a>
+    </div>
+    <div class="footer-copy">© 2025 SongBook by Marvin Okello &nbsp;·&nbsp; Made for musicians everywhere</div>
+  </div>
+</footer>
+
+</body>
+</html>
