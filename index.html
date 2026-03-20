@@ -74,7 +74,7 @@
       height: 64px;
     }
     .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-    .nav-brand-icon { font-size: 26px; line-height: 1; }
+    .nav-brand-icon { width: 32px; height: 32px; border-radius: 7px; flex-shrink: 0; }
     .nav-brand-name { font-size: 19px; font-weight: 800; color: var(--text); letter-spacing: -.3px; }
     .nav-links { display: flex; gap: 6px; list-style: none; }
     .nav-links a {
@@ -356,7 +356,7 @@
       display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
       gap: 40px; margin-bottom: 48px;
     }
-    .footer-brand-icon { font-size: 32px; margin-bottom: 10px; }
+    .footer-brand-icon { width: 44px; height: 44px; border-radius: 10px; margin-bottom: 10px; }
     .footer-brand-name { font-size: 22px; font-weight: 800; color: white; margin-bottom: 10px; }
     .footer-brand-tag  { font-size: 14px; color: rgba(255,255,255,.45); line-height: 1.6; max-width: 240px; }
     .footer-col h4 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,.4); margin-bottom: 16px; }
@@ -392,7 +392,7 @@
 <nav>
   <div class="container nav-inner">
     <a class="nav-brand" href="index.html">
-      <span class="nav-brand-icon">🎵</span>
+      <img class="nav-brand-icon" src="assets/songbook_icon.svg" alt="SongBook">
       <span class="nav-brand-name">SongBook</span>
     </a>
     <ul class="nav-links">
@@ -761,7 +761,7 @@
   <div class="container">
     <div class="footer-grid">
       <div>
-        <div class="footer-brand-icon">🎵</div>
+        <img class="footer-brand-icon" src="assets/songbook_icon.svg" alt="SongBook">
         <div class="footer-brand-name">SongBook</div>
         <p class="footer-brand-tag">Lyrics and chords for every occasion — church, concerts, campfire, karaoke, and beyond.</p>
       </div>
